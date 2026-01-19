@@ -1,18 +1,19 @@
 #!/usr/bin/env bash
 # Script to configure Ubuntu server
 
-# Copy /etc/hosts to temp file
+# Copy the /etc/hosts file
 sudo cp /etc/hosts ~/temp
-sudo chown $USER:$USER ~/temp
 
-# Replace localhost IP
-sed -i 's/^127\.0\.0\.1\s\+localhost/127.0.0.2 localhost/' ~/temp
+# Replace only the localhost entry in the temp file
+sudo sed -i '/127.0.0.1\s\+localhost/s/127.0.0.1/127.0.0.2/' ~/temp
 
-# Add facebook.com entry if missing
-grep -qxF "8.8.8.8 facebook.com" ~/temp || echo "8.8.8.8 facebook.com" >> ~/temp
+# Add facebook.com entry if it doesn't already exist
+if ! grep -q "8.8.8.8 facebook.com" ~/temp; then
+  echo "8.8.8.8 facebook.com" | sudo tee -a ~/temp > /dev/null
+fi
 
-# Copy back to /etc/hosts
+# Copy the modified temp file back to /etc/hosts
 sudo cp -f ~/temp /etc/hosts
 
-# Remove temp file
-rm -f ~/temp
+# Clean up the temp file (optional)
+sudo rm ~/temp
