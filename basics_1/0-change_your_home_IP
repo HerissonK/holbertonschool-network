@@ -16,4 +16,4 @@ fi
 sudo cp -f ~/temp /etc/hosts
 
 # Clean up the temp file (optional)
-rm ~/temp
+sudo rm ~/temp
