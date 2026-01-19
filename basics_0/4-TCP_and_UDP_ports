@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # This script displays Active Internet connections
-netstat -tulpn| sed -n '1,2p;/LISTEN/p'
+netstat -tulpn | sed -n '1,2p;/LISTEN/p'
+netstat -xlp | sed -n '1,2p;/LISTENING/p'
