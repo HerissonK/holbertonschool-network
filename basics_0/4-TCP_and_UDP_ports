@@ -1,2 +1,5 @@
-#!usr/bin/bash
+#!/bin/bash
+echo "Listening ports with PID and program name:"
+echo "-----------------------------------------"
+
 ss -lptn
