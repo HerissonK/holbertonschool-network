@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-# This script displays Active Internet connections
-netstat -p | grep LISTEN
-netstat -xlp | grep LISTENING
+# Displays listening ports with PID and program name
+netstat -lp
