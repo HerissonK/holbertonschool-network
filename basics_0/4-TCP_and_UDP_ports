@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 # This script displays Active Internet connections
-echo "Active Internet connections (only servers)"
-ss -tuln | grep LISTEN
+netstat -tulpen | sed -n '1,2p;/LISTEN/p'
