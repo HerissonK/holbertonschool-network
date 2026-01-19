@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # This script displays Active Internet connections
+echo "Active Internet connections (only servers)"
 netstat -lp
